@@ -1,0 +1,42 @@
+{
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ],
+      "stage-3"
+    ],
+    "plugins": [
+      "syntax-dynamic-import",
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ],
+          "alias": {
+            "api": "./src/api",
+            "components": "./src/components",
+            "views": "./src/views"
+          }
+        }
+      ]
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ]
+        ]
+      }
+    }
+  }
+  
