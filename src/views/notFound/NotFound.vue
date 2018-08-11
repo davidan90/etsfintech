@@ -1,3 +1,14 @@
+<style lang="scss" scoped>
+@import "mixins";
+
+#notFound {
+  @include flex(column, center, center);
+
+  height: 5rem;
+  width: 100%;
+}
+</style>
+
 <template>
   <section id="notFound">
     <h1>{{ $t("notFound.message") }}</h1>
@@ -9,14 +20,3 @@ export default {
   name: "NotFound"
 };
 </script>
-
-<style lang="scss" scoped>
-@import "mixins";
-
-#notFound {
-  @include flex(column, center, center);
-
-  height: 5rem;
-  width: 100%;
-}
-</style>

@@ -1,20 +1,3 @@
-<template>
-  <aside :class="{ 'aside--active': isActive }">
-    <slot/>
-  </aside>
-</template>
-
-<script>
-export default {
-  name: "Aside",
-  computed: {
-    isActive() {
-      return this.$store.getters.isAsideShow;
-    }
-  }
-};
-</script>
-
 <style lang="scss" scoped>
 @import "mixins";
 @import "colors";
@@ -54,3 +37,20 @@ aside {
   }
 }
 </style>
+
+<template>
+  <aside :class="{ 'aside--active': isActive }">
+    <slot/>
+  </aside>
+</template>
+
+<script>
+export default {
+  name: "Aside",
+  computed: {
+    isActive() {
+      return this.$store.getters.isAsideShow;
+    }
+  }
+};
+</script>

@@ -1,3 +1,14 @@
+<style lang="scss" scoped>
+@import "mixins";
+
+#home,
+#home article {
+  @include flex(column, center, center);
+
+  width: 100%;
+}
+</style>
+
 <template>
   <section id="home">
     <article>
@@ -58,14 +69,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-@import "mixins";
-
-#home,
-#home article {
-  @include flex(column, center, center);
-
-  width: 100%;
-}
-</style>

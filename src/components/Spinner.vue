@@ -1,13 +1,3 @@
-<template>
-  <div class="spinner"/>
-</template>
-
-<script>
-export default {
-  name: "Spinner"
-};
-</script>
-
 <style lang="scss" scoped>
 @keyframes spin {
   0% {
@@ -28,3 +18,13 @@ export default {
   width: 50px;
 }
 </style>
+
+<template>
+  <div class="spinner"/>
+</template>
+
+<script>
+export default {
+  name: "Spinner"
+};
+</script>

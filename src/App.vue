@@ -1,30 +1,3 @@
-<template>
-  <div id="etsfintech">
-    <header class="header">
-      <picture class="header__logo">
-        <img src="./assets/img/logo.png">
-      </picture>
-      <div class="header__navbar">
-        <NavBar />
-      </div>
-    </header>
-    <main class="main">
-      <router-view/>
-    </main>
-  </div>
-</template>
-
-<script>
-import { NavBar } from "components";
-
-export default {
-  name: "EtsFintechApp",
-  components: {
-    NavBar
-  }
-};
-</script>
-
 <style lang="scss">
 @import "global";
 @import "mixins";
@@ -98,3 +71,30 @@ a {
   color: $third-color;
 }
 </style>
+
+<template>
+  <div id="etsfintech">
+    <header class="header">
+      <picture class="header__logo">
+        <img src="./assets/img/logo.png">
+      </picture>
+      <div class="header__navbar">
+        <NavBar />
+      </div>
+    </header>
+    <main class="main">
+      <router-view/>
+    </main>
+  </div>
+</template>
+
+<script>
+import { NavBar } from "components";
+
+export default {
+  name: "EtsFintechApp",
+  components: {
+    NavBar
+  }
+};
+</script>
