@@ -4,7 +4,6 @@ export default {
     data: undefined
   },
   detail: {
-    id: undefined,
     processing: false,
     data: undefined
   }

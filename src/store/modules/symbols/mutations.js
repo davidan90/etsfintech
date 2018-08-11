@@ -11,14 +11,13 @@ export default {
   },
   [GET_ALL_SYMBOLS](state, payload) {
     state.all.processing = false;
-    state.all.data = payload.symbol;
+    state.all.data = payload.symbols;
   },
-  [PROCESSING_DETAIL_SYMBOL](state, payload) {
+  [PROCESSING_DETAIL_SYMBOL](state) {
     state.detail.processing = true;
-    state.detail.id = payload.id;
   },
   [GET_DETAIL_SYMBOL](state, payload) {
     state.detail.processing = false;
-    state.all.data = payload.detail;
+    state.detail.data = payload.detail;
   }
 };

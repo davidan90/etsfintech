@@ -17,7 +17,7 @@ export default {
     }
   },
 
-  async getDetailSymbol({ commit }, id) {
+  async getDetailSymbol({ commit }, { id }) {
     commit(PROCESSING_DETAIL_SYMBOL);
     const detail = await symbols.getDetail(id);
     if (detail) {
