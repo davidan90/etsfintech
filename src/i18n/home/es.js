@@ -24,5 +24,9 @@ export default {
         sector: "Sector"
       }
     }
+  },
+  comment: {
+    button: "Comment",
+    placeholder: "Write something..."
   }
 };

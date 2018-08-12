@@ -89,6 +89,7 @@ footer {
           {{ `${$t("home.aside.symbols.detail.region")}: ${nestedInfo("region")}` }}
         </span>
       </div>
+      <SymbolCommentForm :symbolid="symbol.id" />
     </section>
     <footer>
       <button @click="close">{{ $t("app.close") }}</button>
@@ -98,12 +99,14 @@ footer {
 
 <script>
 import { Aside, Spinner } from "components";
+import SymbolCommentForm from "./SymbolCommentForm";
 
 export default {
   name: "SymboldDetail",
   components: {
     Aside,
-    Spinner
+    Spinner,
+    SymbolCommentForm
   },
   props: {
     symbol: {
