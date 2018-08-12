@@ -59,6 +59,7 @@ footer {
       <Spinner />
     </section>
     <section v-else class="symbol-detail">
+      <h3>{{ $t('home.aside.symbols.details') }}</h3>
       <div class="symbol-detail__info">
         <span>
           {{ `${$t("home.aside.symbols.detail.isin")}: ${details.isin}` }}
@@ -89,7 +90,7 @@ footer {
           {{ `${$t("home.aside.symbols.detail.region")}: ${nestedInfo("region")}` }}
         </span>
       </div>
-      <SymbolCommentForm :symbolid="symbol.id" />
+      <SymbolCommentForm :symbol="symbol" />
     </section>
     <footer>
       <button @click="close">{{ $t("app.close") }}</button>

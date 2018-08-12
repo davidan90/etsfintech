@@ -8,13 +8,15 @@ export default {
         head: {
           name: "Nombre",
           currency: "Divisa",
-          risk: "Riesgo"
+          risk: "Riesgo",
+          comments: "Comentarios"
         }
       }
     }
   },
   aside: {
     symbols: {
+      details: "Detalles:",
       detail: {
         isin: "ISIN",
         currency: "Divisa",
@@ -25,8 +27,13 @@ export default {
       }
     }
   },
-  comment: {
-    button: "Comment",
-    placeholder: "Write something..."
+  comments: {
+    title: "Comentarios:",
+    button: {
+      create: "Nuevo Comentario",
+      update: "Actualizar",
+      remove: "Borrar"
+    },
+    placeholder: "Escribe algo..."
   }
 };

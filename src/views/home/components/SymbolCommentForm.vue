@@ -1,47 +1,67 @@
 <style lang="scss" scoped>
 @import "mixins";
 
-.comment-form {
-  @include flex(column, flex-start, inherit);
-
+.comment-section {
   width: 100%;
 
-  textarea {
-    height: 4rem;
-    resize: none;
-    width: 100%;
+  .comment-form {
+    @include flex(column, flex-start, inherit);
+
+    margin: 1rem 0;
+
+    textarea {
+      box-sizing: border-box;
+      height: 4rem;
+      resize: none;
+      width: 100%;
+    }
   }
 }
 </style>
 
 <template>
-  <form class="comment-form" @submit="saveComment">
-    <textarea v-model="comment" :placeholder="$t('home.comment.placeholder')" class="comment-form__input" />
-    <button type="submit">{{ $t("home.comment.button") }}</button>
-  </form>
+  <div v-if="symbol" class="comment-section">
+    <div v-if="comments" class="comments">
+      <h3>{{ $t('home.comments.title') }}</h3>
+      <SymbolComment v-for="comment in comments" :key="comment.id" :comment="comment" :symbolid="symbol.id"/>
+    </div>
+    <form class="comment-form" @submit="create">
+      <textarea v-model="comment" :placeholder="$t('home.comments.placeholder')" class="comment-form__input" />
+      <button type="submit">{{ $t("home.comments.button.create") }}</button>
+    </form>
+  </div>
 </template>
 
 <script>
+import SymbolComment from "./SymbolComment";
+
 export default {
   name: "SymbolCommentForm",
+  components: {
+    SymbolComment
+  },
   props: {
-    symbolid: {
+    symbol: {
       default: undefined,
-      type: Number
+      type: Object
     }
   },
   data() {
     return {
-      comment: undefined,
-      place: "Write"
+      comment: undefined
     };
   },
+  computed: {
+    comments() {
+      return this.$store.getters.getSymbolComments(this.symbol.id);
+    }
+  },
   methods: {
-    saveComment(e) {
+    create(e) {
       e.preventDefault();
       const isValid = this.isValidComment(this.comment);
       if (isValid) {
-        this.saveInLocalStorage(this.symbolid, this.comment);
+        this.saveInLocalStorage(this.symbol.id, this.comment);
       }
     },
     isValidComment(comment) {
@@ -58,14 +78,15 @@ export default {
       if (comments) {
         let comment;
         if (comments[id]) {
-          comment = this.createComment(comments[id].length, text);
+          comment = this.createComment(text);
           comments[id].push(comment);
         } else {
-          comment = this.createComment(0, text);
+          comment = this.createComment(text);
           comments[id] = [comment];
         }
-        console.log(comments);
+        this.$store.dispatch("addComment", { symbolId: id, comment });
         localStorage.setItem("comments", JSON.stringify(comments));
+        this.comment = undefined;
       }
     },
     generateCommentsLocal() {
@@ -73,9 +94,11 @@ export default {
         localStorage.setItem("comments", JSON.stringify({}));
       }
     },
-    createComment(id, text) {
+    createComment(text) {
       return {
-        id,
+        id: `_${Math.random()
+          .toString(36)
+          .substring(2, 9)}`,
         text
       };
     }

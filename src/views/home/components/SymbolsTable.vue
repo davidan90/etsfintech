@@ -28,7 +28,7 @@
   .table__head .tr,
   .table__body .tr {
     display: grid;
-    grid-template-columns: 2fr repeat(2, 1fr);
+    grid-template-columns: 2fr repeat(3, 0.75fr);
   }
 
   .table__head .tr {
@@ -111,10 +111,14 @@
           <span>{{ symbol.name }}</span>
         </div>
         <div class="td">
+          <span>{{ symbol.risk_family }}</span>
+        </div>
+        <div class="td">
           <span>{{ symbol.currency }}</span>
         </div>
         <div class="td">
-          <span>{{ symbol.risk_family }}</span>
+          <span v-if="symbol.comments">{{ symbol.comments.length }}</span>
+          <span v-else>0</span>
         </div>
       </div>
     </div>
@@ -141,8 +145,9 @@ export default {
       const messages = this.$i18n.messages[locale];
       return [
         messages.home.sections.symbols.table.head.name,
+        messages.home.sections.symbols.table.head.risk,
         messages.home.sections.symbols.table.head.currency,
-        messages.home.sections.symbols.table.head.risk
+        messages.home.sections.symbols.table.head.comments
       ];
     },
     hasSymbols() {
