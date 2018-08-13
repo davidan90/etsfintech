@@ -123,7 +123,7 @@ export default {
       return this.$store.getters.detailSymbol;
     },
     riskDetails() {
-      return `${this.details.name} ${
+      return `${this.details.risk_family.name} ${
         this.details.sub_family ? "/ " + this.details.sub_family.name : ""
       }`;
     }
@@ -133,12 +133,14 @@ export default {
       this.$store.dispatch("hideAside");
     },
     nestedInfo(key) {
-      return this.$utils.recursion.nestedLevels(
-        this.details[key],
-        key,
-        this.details[key].name,
-        2
-      );
+      return this.details[key]
+        ? this.$utils.recursion.nestedLevels(
+            this.details[key],
+            key,
+            this.details[key].name,
+            2
+          )
+        : "-";
     }
   }
 };
