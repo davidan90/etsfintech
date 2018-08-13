@@ -5,7 +5,9 @@ import {
   GET_DETAIL_SYMBOL,
   ADD_COMMENT_TO_SYMBOL,
   REMOVE_COMMENT_FROM_SYMBOL,
-  UPDATE_COMMENT_FROM_SYMBOL
+  UPDATE_COMMENT_FROM_SYMBOL,
+  FILTER_All_SYMBOLS,
+  RESET_FILTERS
 } from "./mutation-types";
 
 export default {
@@ -15,6 +17,7 @@ export default {
   [GET_ALL_SYMBOLS](state, { symbols }) {
     state.all.processing = false;
     state.all.data = symbols;
+    state.all.filtered = symbols;
   },
   [PROCESSING_DETAIL_SYMBOL](state) {
     state.detail.processing = true;
@@ -55,5 +58,21 @@ export default {
       }
       return symbol;
     });
+  },
+  [FILTER_All_SYMBOLS](state, { type, value }) {
+    if (state.all.data.length === state.all.filtered.length) {
+      state.all.filtered = state.all.data.filter(symbol => {
+        return symbol[type] === value;
+      });
+    } else {
+      state.all.filtered = state.all.filtered.concat(
+        state.all.data.filter(symbol => {
+          return symbol[type] === value;
+        })
+      );
+    }
+  },
+  [RESET_FILTERS](state) {
+    state.all.filtered = state.all.data.slice();
   }
 };

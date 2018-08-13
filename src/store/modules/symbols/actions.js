@@ -6,7 +6,9 @@ import {
   GET_DETAIL_SYMBOL,
   ADD_COMMENT_TO_SYMBOL,
   REMOVE_COMMENT_FROM_SYMBOL,
-  UPDATE_COMMENT_FROM_SYMBOL
+  UPDATE_COMMENT_FROM_SYMBOL,
+  FILTER_All_SYMBOLS,
+  RESET_FILTERS
 } from "./mutation-types";
 
 export default {
@@ -28,6 +30,19 @@ export default {
         detail
       });
     }
+  },
+
+  filterAllSymbols({ commit }, { type, value }) {
+    if (type && value) {
+      commit(FILTER_All_SYMBOLS, {
+        type,
+        value
+      });
+    }
+  },
+
+  resetFilters({ commit }) {
+    commit(RESET_FILTERS);
   },
 
   addComment({ commit }, { symbolId, comment }) {

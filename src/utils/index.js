@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { recursion } from "./recursion";
+import { symbols } from "./symbols";
 
 Vue.mixin({
   beforeCreate() {
@@ -14,6 +15,7 @@ Vue.mixin({
 
 export default function() {
   return {
-    recursion
+    recursion,
+    symbols
   };
 }

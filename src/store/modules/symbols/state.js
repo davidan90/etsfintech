@@ -1,7 +1,8 @@
 export default {
   all: {
     processing: false,
-    data: undefined
+    data: undefined,
+    filtered: undefined
   },
   detail: {
     processing: false,

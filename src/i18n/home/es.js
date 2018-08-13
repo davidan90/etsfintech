@@ -11,6 +11,9 @@ export default {
           risk: "Riesgo",
           comments: "Comentarios"
         }
+      },
+      filters: {
+        title: "Filtros:"
       }
     }
   },

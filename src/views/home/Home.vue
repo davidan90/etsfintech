@@ -14,20 +14,24 @@
     <article>
       <h1>{{ $t("home.sections.symbols.title") }}</h1>
       <Spinner v-if="isLoading"/>
-      <SymbolsTable :symbols="symbols" @show-symbol-detail="showSymbolDetail"/>
-      <SymbolDetail :symbol="symbolSelected"/>
+      <template v-else>
+        <SymbolsFilter />
+        <SymbolsTable :symbols="symbols" @show-symbol-detail="showSymbolDetail"/>
+        <SymbolDetail :symbol="symbolSelected"/>
+      </template>
     </article>
   </section>
 </template>
 
 <script>
 import { Spinner } from "components";
-import { SymbolsTable, SymbolDetail } from "./components";
+import { SymbolsTable, SymbolDetail, SymbolsFilter } from "./components";
 
 export default {
   name: "Home",
   components: {
     Spinner,
+    SymbolsFilter,
     SymbolsTable,
     SymbolDetail
   },
@@ -41,7 +45,7 @@ export default {
       return !this.symbols;
     },
     symbols() {
-      return this.$store.getters.allSymbols;
+      return this.$store.getters.filteredSymbols;
     }
   },
   mounted() {

@@ -51,8 +51,6 @@
     <div v-if="!isUpdating" class="comment-content">
       <p>{{ comment.text }}</p>
       <div class="options">
-        <!-- <button @click="toggleUpdate">{{ $t("home.comments.button.update") }}</button> -->
-        <!-- <button @click="remove">{{ $t("home.comments.button.remove") }}</button> -->
         <svgicon name="edit" class="option-icon" @click="toggleUpdate"/>
         <svgicon name="delete" class="option-icon" height="1.5rem" width="1.5rem" @click="remove"/>
       </div>

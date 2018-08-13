@@ -5,6 +5,7 @@
 
 .table {
   border: 1px solid $third-color;
+  margin: 1rem 0;
   width: 100%;
 
   .tr {
