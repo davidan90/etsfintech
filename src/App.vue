@@ -4,7 +4,6 @@
 @import "colors";
 
 #etsfintech {
-  color: $second-color;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,7 +16,7 @@
   header.header {
     @include flex(row, center, flex-start);
 
-    background-color: $primary-color;
+    background-color: $gray-color;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.7);
     padding: 10px 0;
     text-transform: uppercase;
@@ -52,6 +51,11 @@
   }
 }
 
+h1 {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -61,17 +65,13 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-
-a {
-  color: $third-color;
-}
 </style>
 
 <template>
   <div id="etsfintech">
     <header class="header">
       <picture class="header__logo">
-        <img src="./assets/img/logo.png">
+        <img src="./assets/img/ets_logo.png">
       </picture>
       <div class="header__navbar">
         <NavBar />

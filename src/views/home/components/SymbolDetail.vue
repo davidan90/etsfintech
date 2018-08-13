@@ -4,22 +4,33 @@
 $margin: 0.5rem;
 $padding: 0.5rem;
 
-header,
-footer {
+header {
   @include flex(row, center, inherit);
 
-  background-color: $third-color;
+  background-color: $purple-color;
+  color: $white-color;
   height: 50px;
   padding: 10px 0;
   width: 100%;
-}
 
-header {
   h2 {
     margin: $margin;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .close-icon {
+    cursor: pointer;
+    height: 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2rem;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
@@ -27,25 +38,14 @@ header {
   @include flex(column, flex-start, inherit);
 
   box-sizing: border-box;
+  overflow-y: auto;
   padding: $padding;
   width: 100%;
 
   &.loader {
     @include flex(column, center, inherit);
-  }
-}
 
-footer {
-  bottom: 0;
-  justify-content: center;
-  position: absolute;
-
-  button {
-    background-color: $white-color;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 2rem;
-    min-width: 70px;
+    overflow-y: hidden;
   }
 }
 </style>
@@ -54,6 +54,7 @@ footer {
   <Aside v-if="symbol">
     <header>
       <h2>{{ symbol.name }}</h2>
+      <svgicon name="clear" class="close-icon" color="#ffffff" @click="close"/>
     </header>
     <section v-if="isLoadingDetails" class="symbol-detail loader">
       <Spinner />
@@ -92,9 +93,6 @@ footer {
       </div>
       <SymbolCommentForm :symbol="symbol" />
     </section>
-    <footer>
-      <button @click="close">{{ $t("app.close") }}</button>
-    </footer>
   </Aside>
 </template>
 

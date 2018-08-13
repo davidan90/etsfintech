@@ -32,10 +32,11 @@ export default {
     }
   },
 
-  filterAllSymbols({ commit }, { type, value }) {
+  filterAllSymbols({ commit }, { type, isAdd, value }) {
     if (type && value) {
       commit(FILTER_All_SYMBOLS, {
         type,
+        isAdd,
         value
       });
     }

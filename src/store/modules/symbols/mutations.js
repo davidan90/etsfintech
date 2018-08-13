@@ -59,20 +59,34 @@ export default {
       return symbol;
     });
   },
-  [FILTER_All_SYMBOLS](state, { type, value }) {
-    if (state.all.data.length === state.all.filtered.length) {
-      state.all.filtered = state.all.data.filter(symbol => {
-        return symbol[type] === value;
-      });
+  [FILTER_All_SYMBOLS](state, payload) {
+    if (payload.isAdd) {
+      state.all.filtered = addFilters(state, payload);
     } else {
-      state.all.filtered = state.all.filtered.concat(
-        state.all.data.filter(symbol => {
-          return symbol[type] === value;
-        })
-      );
+      state.all.filtered = removeFilters(state, payload);
     }
   },
   [RESET_FILTERS](state) {
     state.all.filtered = state.all.data.slice();
   }
+};
+
+const addFilters = (state, { type, value }) => {
+  if (state.all.data.length === state.all.filtered.length) {
+    return state.all.data.filter(symbol => symbol[type] === value);
+  } else {
+    return state.all.filtered.concat(
+      state.all.data.filter(symbol => symbol[type] === value)
+    );
+  }
+};
+
+const removeFilters = (state, { type, value }) => {
+  let filtered = [];
+  state.all.filtered.forEach(symbol => {
+    if (symbol[type] !== value) {
+      filtered.push(symbol);
+    }
+  });
+  return filtered;
 };

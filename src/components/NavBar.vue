@@ -1,4 +1,6 @@
 <style lang="scss" scoped>
+@import "colors";
+
 #navBar {
   width: 100%;
 
@@ -6,11 +8,12 @@
     margin: 0 1rem;
 
     a {
+      color: $blue-color;
       font-weight: bold;
       text-decoration: none;
 
       &:hover {
-        color: #2c3e50;
+        color: $purple-color;
       }
     }
   }

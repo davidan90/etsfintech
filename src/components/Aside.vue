@@ -16,7 +16,7 @@ $aside-active-right: 0;
 }
 
 aside {
-  background-color: $primary-color;
+  background-color: $gray-color;
   box-shadow: -3px 0 5px 0 rgba(0, 0, 0, 0.7);
   display: none;
   height: 100%;
@@ -33,6 +33,7 @@ aside {
   }
 
   @media #{$screen-s} {
+    min-width: 0;
     width: 100%;
   }
 }

@@ -1,4 +1,6 @@
 <style lang="scss" scoped>
+@import "colors";
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -11,9 +13,9 @@
 
 .spinner {
   animation: spin 2s linear infinite;
-  border: 5px solid #f3f3f3;
+  border: 5px solid $blue-transparent-color;
   border-radius: 50%;
-  border-top: 5px solid #74848e;
+  border-top: 5px solid $purple-color;
   height: 50px;
   width: 50px;
 }

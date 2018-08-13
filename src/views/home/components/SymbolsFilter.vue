@@ -1,13 +1,35 @@
 <style lang="scss" scoped>
+@import "mixins";
+@import "colors";
+@import "responsive";
+
 .filters {
   width: 100%;
 
-  select {
-    min-width: 200px;
-  }
+  .filters-content {
+    @include flex(row, center, inherit);
 
-  .filter-list {
-    margin: 1rem 0;
+    background-color: $gray-color;
+    border-radius: 3px;
+    padding: 1rem 0.3rem;
+
+    select {
+      min-width: 200px;
+    }
+
+    .filter-list {
+      border-left: 2px solid $purple-color;
+      margin: 0 1rem;
+      padding: 0 0.5rem;
+
+      @media #{$screen-s} {
+        margin: 1rem 0;
+      }
+    }
+
+    @media #{$screen-s} {
+      @include flex(column, flex-start, inherit);
+    }
   }
 }
 </style>
@@ -15,21 +37,29 @@
 <template>
   <div class="filters">
     <h3>{{ $t("home.sections.symbols.filters.title") }}</h3>
-    <select class="filter-select" @change="changeFilter">
-      <option value="" selected>--</option>
-      <option value="currency">{{ $t("home.sections.symbols.table.head.currency") }}</option>
-      <option value="risk_family">{{ $t("home.sections.symbols.table.head.risk") }}</option>
-    </select>
-    <div v-if="filterOptions.enabled" class="filter-list">
-      <FilterOption v-for="(filterValue, index) in filterOptions.values"
-                    :key="`${filterOptions.type}${index}`"
-                    :value="filterValue" @filter-toggle="filterToggle"/>
+    <div class="filters-content">
+      <select class="filter-select" @change="changeFilter">
+        <option value="" selected>--</option>
+        <option value="currency">{{ $t("home.sections.symbols.table.head.currency") }}</option>
+        <option value="risk_family">{{ $t("home.sections.symbols.table.head.risk") }}</option>
+      </select>
+      <div v-if="filterOptions.enabled" class="filter-list">
+        <FilterOption v-for="(filterValue, index) in filterOptions.allValues"
+                      :key="`${filterOptions.type}${index}`"
+                      :value="filterValue" @filter-toggle="filterToggle"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import FilterOption from "./FilterOption";
+
+const filterOptionsDefault = {
+  enabled: false,
+  type: undefined,
+  allValues: undefined
+};
 
 export default {
   name: "SymbolsFilter",
@@ -39,9 +69,7 @@ export default {
   data() {
     return {
       filterOptions: {
-        enabled: false,
-        type: undefined,
-        values: undefined
+        ...filterOptionsDefault
       }
     };
   },
@@ -60,22 +88,18 @@ export default {
       if (attr) {
         this.filterOptions.enabled = true;
         this.filterOptions.type = attr;
-        this.filterOptions.values = this.$utils.symbols.getAllValuesByAttribute(
+        this.filterOptions.allValues = this.$utils.symbols.getAllValuesByAttribute(
           this.allSymbols,
           attr
         );
       } else {
-        this.removeFilters();
+        this.filterOptions = { ...filterOptionsDefault };
       }
-    },
-    removeFilters() {
-      this.filterOptions.enabled = false;
-      this.filterOptions.type = undefined;
-      this.filterOptions.values = undefined;
     },
     filterToggle(filter) {
       this.$store.dispatch("filterAllSymbols", {
         type: this.filterOptions.type,
+        isAdd: filter.checked,
         value: filter.value
       });
     }

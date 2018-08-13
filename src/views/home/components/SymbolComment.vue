@@ -52,7 +52,7 @@
       <p>{{ comment.text }}</p>
       <div class="options">
         <svgicon name="edit" class="option-icon" @click="toggleUpdate"/>
-        <svgicon name="delete" class="option-icon" height="1.5rem" width="1.5rem" @click="remove"/>
+        <svgicon name="delete" class="option-icon" @click="remove"/>
       </div>
     </div>
     <form v-else class="option-update" @submit="update">

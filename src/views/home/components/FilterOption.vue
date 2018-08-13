@@ -1,16 +1,27 @@
 <style lang="scss" scoped>
 @import "colors";
+@import "responsive";
 
 .filter-option {
-  border: 1px solid $black-color;
-  border-radius: 5px;
+  border: 2px solid $blue-color;
+  border-radius: 3px;
+  color: $blue-color;
   cursor: pointer;
   display: inline-block;
   margin-right: 0.5rem;
-  padding: 1rem;
+  padding: 0.3rem;
 
   &.checked {
-    background-color: $primary-color;
+    background-color: $blue-color;
+    color: $purple-color;
+
+    @media #{$screen-l} {
+      &:hover {
+        background-color: $gray-color;
+        color: $blue-color;
+        transform: scale(1.03);
+      }
+    }
   }
 }
 </style>

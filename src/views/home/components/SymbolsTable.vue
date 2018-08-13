@@ -4,7 +4,6 @@
 @import "responsive";
 
 .table {
-  border: 1px solid $third-color;
   margin: 1rem 0;
   width: 100%;
 
@@ -14,25 +13,39 @@
       @include flex(row, center, center);
 
       height: 100%;
-    }
 
-    .th {
-      background-color: $third-color;
+      @media #{$screen-m}, #{$screen-l} {
+        &:first-child {
+          @include flex(row, center, flex-start);
+
+          span {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+
+      @media #{$screen-s} {
+        span {
+          text-align: center;
+          width: 100;
+        }
+      }
     }
   }
 
-  .table__head,
-  .table__body {
+  .table-head,
+  .table-body {
     width: 100%;
   }
 
-  .table__head .tr,
-  .table__body .tr {
+  .table-head .tr,
+  .table-body .tr {
     display: grid;
     grid-template-columns: 2fr repeat(3, 0.75fr);
   }
 
-  .table__head .tr {
+  .table-head .tr {
+    border-bottom: 5px solid $blue-color;
     height: 1.5rem;
     text-transform: uppercase;
 
@@ -51,24 +64,21 @@
     }
   }
 
-  .table__body {
+  .table-body {
     @include flex(column, inherit, inherit);
 
     .tr {
       height: 3rem;
-
-      .td {
-        border: 0.5px solid $third-color;
-        text-align: center;
-      }
+      transition: transform 0.3s;
 
       &:nth-child(even) {
         background-color: $gray-color;
       }
 
       &:hover {
-        background-color: $primary-color;
+        background-color: $blue-transparent-color;
         cursor: pointer;
+        transform: scale(1.03);
       }
 
       @media #{$screen-s} {
@@ -89,7 +99,7 @@
     }
   }
 
-  .table__body--empty {
+  .table-body--empty {
     background-color: $gray-color;
     text-align: center;
     width: 100%;
@@ -99,14 +109,14 @@
 
 <template>
   <div v-if="symbols" class="table">
-    <div class="table__head">
+    <div class="table-head">
       <div class="tr">
         <div v-for="(header, index) in headers" :key="index" class="th">
           <span>{{ header }}</span>
         </div>
       </div>
     </div>
-    <div v-if="hasSymbols" class="table__body">
+    <div v-if="hasSymbols" class="table-body">
       <div v-for="symbol in symbols" :key="symbol.id" class="tr" @click="showDetail(symbol)">
         <div class="td">
           <span>{{ symbol.name }}</span>
@@ -123,7 +133,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!hasSymbols" class="table__body--empty">
+    <div v-if="!hasSymbols" class="table-body--empty">
       <span>{{ $t("home.sections.symbols.table.empty") }}</span>
     </div>
   </div>
