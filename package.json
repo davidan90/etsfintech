@@ -17,12 +17,13 @@
     "lint:css": "stylelint '**/*.vue' --syntax scss",
     "lint:js:fix": "eslint --ext .js,.vue src --fix",
     "eslint:check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "precommit": "npm run lint && npm run lint:css",
     "test": "jest --config ./config/jest/jest.config.js",
     "test:watch": "jest --watchAll --coverage --config ./config/jest/jest.config.js",
     "test:overwrite:snap": "npm test -- -u",
     "coverage:open:mac": "open coverage/lcov-report/index.html",
-    "coverage:open:linux": "xdg-open coverage/lcov-report/index.html"
+    "coverage:open:linux": "xdg-open coverage/lcov-report/index.html",
+    "icons": "vsvg -s ./src/assets/icons -t ./src/assets/icons/compiled",
+    "precommit": "npm run lint && npm run lint:css"
   },
   "dependencies": {
     "vue": "^2.5.11",
@@ -64,6 +65,7 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-processor-html": "^1.0.0",
     "vue-loader": "^15.2.6",
+    "vue-svgicon": "^3.0.4",
     "vue-template-compiler": "^2.4.4",
     "vue-test-utils": "^1.0.0-beta.11",
     "webpack": "^4.16.2",
