@@ -3,27 +3,27 @@
 @import "colors";
 
 .comment {
-  margin: 1rem 0;
+  background: $purple-transparent-color;
+  border-radius: 3px;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
 
   .comment-content {
     @include flex(row, center, flex-start);
 
-    p,
-    .options {
-      min-height: 60px;
-    }
-
     p {
       background-color: $white-color;
-      margin: 0;
-      min-height: 60px;
+      margin: 0.3rem;
+      overflow-x: hidden;
       padding: 0.5rem;
       width: 90%;
     }
 
     .options {
-      @include flex(column, center, space-between);
+      @include flex(column, center, space-around);
 
+      max-height: 100px;
+      min-height: 60px;
       width: 10%;
 
       .option-icon {
@@ -35,7 +35,10 @@
   }
 
   .option-update {
+    padding: 0 0.3rem;
+
     textarea {
+      border-radius: 0.3rem;
       box-sizing: border-box;
       min-height: 60px;
       padding: 0.5rem;
@@ -51,8 +54,8 @@
     <div v-if="!isUpdating" class="comment-content">
       <p>{{ comment.text }}</p>
       <div class="options">
-        <svgicon name="edit" class="option-icon" @click="toggleUpdate"/>
-        <svgicon name="delete" class="option-icon" @click="remove"/>
+        <svgicon name="edit" class="option-icon" color="#360052" @click="toggleUpdate"/>
+        <svgicon name="delete" class="option-icon" color="#360052" @click="remove"/>
       </div>
     </div>
     <form v-else class="option-update" @submit="update">

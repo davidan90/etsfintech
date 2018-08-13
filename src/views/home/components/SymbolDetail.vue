@@ -9,7 +9,7 @@ header {
 
   background-color: $purple-color;
   color: $white-color;
-  height: 50px;
+  min-height: 50px;
   padding: 10px 0;
   width: 100%;
 
@@ -46,6 +46,13 @@ header {
     @include flex(column, center, inherit);
 
     overflow-y: hidden;
+  }
+
+  .symbol-chart {
+    @include flex(row, center, center);
+
+    min-height: 420px;
+    width: 100%;
   }
 }
 </style>
@@ -91,6 +98,9 @@ header {
           {{ `${$t("home.aside.symbols.detail.region")}: ${nestedInfo("region")}` }}
         </span>
       </div>
+      <div class="symbol-chart">
+        <LineChart :data="details.prices" :options="{responsive: true}"/>
+      </div>
       <SymbolCommentForm :symbol="symbol" />
     </section>
   </Aside>
@@ -99,13 +109,15 @@ header {
 <script>
 import { Aside, Spinner } from "components";
 import SymbolCommentForm from "./SymbolCommentForm";
+import LineChart from "./SymbolDateChart";
 
 export default {
   name: "SymboldDetail",
   components: {
     Aside,
     Spinner,
-    SymbolCommentForm
+    SymbolCommentForm,
+    LineChart
   },
   props: {
     symbol: {

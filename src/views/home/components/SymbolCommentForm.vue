@@ -10,6 +10,7 @@
     margin: 1rem 0;
 
     textarea {
+      border-radius: 0.3rem;
       box-sizing: border-box;
       height: 4rem;
       margin-bottom: 0.5rem;

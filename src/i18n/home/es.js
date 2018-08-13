@@ -26,7 +26,8 @@ export default {
         issuer: "Emisor",
         region: "Región",
         risk: "Riesgo",
-        sector: "Sector"
+        sector: "Sector",
+        prices: "Precios"
       }
     }
   },
