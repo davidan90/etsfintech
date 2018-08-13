@@ -4,7 +4,8 @@ import {
   PROCESSING_DETAIL_SYMBOL,
   GET_DETAIL_SYMBOL,
   ADD_COMMENT_TO_SYMBOL,
-  REMOVE_COMMENT_FROM_SYMBOL
+  REMOVE_COMMENT_FROM_SYMBOL,
+  UPDATE_COMMENT_FROM_SYMBOL
 } from "./mutation-types";
 
 export default {
@@ -39,6 +40,18 @@ export default {
       if (symbol.id === symbolId) {
         const commentIds = symbol.comments.map(comment => comment.id);
         symbol.comments.splice(commentIds.indexOf(commentId), 1);
+      }
+      return symbol;
+    });
+  },
+  [UPDATE_COMMENT_FROM_SYMBOL](state, { symbolId, updatedComment }) {
+    state.all.data = state.all.data.map(symbol => {
+      if (symbol.id === symbolId) {
+        const commentToChange = symbol.comments.find(
+          comment => comment.id === updatedComment.id
+        );
+        const index = symbol.comments.indexOf(commentToChange);
+        symbol.comments[index] = updatedComment;
       }
       return symbol;
     });

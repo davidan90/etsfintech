@@ -5,7 +5,8 @@ import {
   PROCESSING_DETAIL_SYMBOL,
   GET_DETAIL_SYMBOL,
   ADD_COMMENT_TO_SYMBOL,
-  REMOVE_COMMENT_FROM_SYMBOL
+  REMOVE_COMMENT_FROM_SYMBOL,
+  UPDATE_COMMENT_FROM_SYMBOL
 } from "./mutation-types";
 
 export default {
@@ -43,6 +44,15 @@ export default {
       commit(REMOVE_COMMENT_FROM_SYMBOL, {
         symbolId,
         commentId
+      });
+    }
+  },
+
+  updateComment({ commit }, { symbolId, updatedComment }) {
+    if (symbolId && updatedComment) {
+      commit(UPDATE_COMMENT_FROM_SYMBOL, {
+        symbolId,
+        updatedComment
       });
     }
   }

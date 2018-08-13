@@ -12,6 +12,7 @@
     textarea {
       box-sizing: border-box;
       height: 4rem;
+      margin-bottom: 0.5rem;
       resize: none;
       width: 100%;
     }
