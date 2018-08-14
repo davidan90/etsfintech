@@ -1,4 +1,8 @@
 export default {
   menu: "Menu",
-  close: "Cerrar"
+  close: "Cerrar",
+  locale: {
+    es: "Español",
+    en: "Ingles"
+  }
 };

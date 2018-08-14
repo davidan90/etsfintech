@@ -34,7 +34,7 @@ export default {
   comments: {
     title: "Comentarios:",
     button: {
-      create: "Nuevo Comentario",
+      create: "Nuevo comentario",
       update: "Actualizar",
       remove: "Borrar"
     },

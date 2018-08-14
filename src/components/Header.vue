@@ -40,6 +40,7 @@
       </picture>
       <NavBar />
       <NavBarMobile />
+      <LocaleSwitch />
     </div>
   </header>
 </template>
@@ -47,12 +48,14 @@
 <script>
 import NavBar from "./NavBar";
 import NavBarMobile from "./NavBarMobile";
+import LocaleSwitch from "./LocaleSwitch";
 
 export default {
   name: "Header",
   components: {
     NavBar,
-    NavBarMobile
+    NavBarMobile,
+    LocaleSwitch
   }
 };
 </script>

@@ -1,5 +1,5 @@
 export default {
-  title: "Contacto",
+  title: "Contact us",
   enterprise: {
     name: "EtsFintech",
     dir: "Pozuelo de Alarcón, Madrid",

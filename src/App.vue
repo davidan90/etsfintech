@@ -26,6 +26,7 @@ h1 {
   color: $blue-color;
   font-size: 2rem;
   margin: 1rem;
+  text-align: center;
   text-transform: uppercase;
 }
 

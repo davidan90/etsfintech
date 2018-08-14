@@ -22,9 +22,9 @@
     <article>
       <h1>{{ $t("contact.title") }}</h1>
       <div class="info">
-        <span class="name">{{ $t("contact.me.name") }}</span>
-        <span class="job">{{ $t("contact.me.job") }}</span>
-        <span class="email">{{ $t("contact.me.email") }}</span>
+        <span class="name">{{ $t("contact.enterprise.name") }}</span>
+        <span class="dir">{{ $t("contact.enterprise.dir") }}</span>
+        <span class="tel">{{ $t("contact.enterprise.tel") }}</span>
       </div>
     </article>
   </section>
