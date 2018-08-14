@@ -88,7 +88,7 @@ export default {
       if (attr) {
         this.filterOptions.enabled = true;
         this.filterOptions.type = attr;
-        this.filterOptions.allValues = this.$utils.symbols.getAllValuesByAttribute(
+        this.filterOptions.allValues = this.$utils.getAllValuesByAttribute(
           this.allSymbols,
           attr
         );

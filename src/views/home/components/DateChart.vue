@@ -4,7 +4,7 @@ import { generateChart } from "vue-chartjs";
 const CustomLine = generateChart("symbol-date-chart", "line");
 
 export default {
-  name: "SymbolDateChart",
+  name: "DateChart",
   extends: CustomLine,
   props: {
     data: {

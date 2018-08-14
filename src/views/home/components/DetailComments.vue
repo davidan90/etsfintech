@@ -25,7 +25,7 @@
   <div v-if="symbol" class="comment-section">
     <div v-if="comments" class="comments">
       <h3>{{ $t('home.comments.title') }}</h3>
-      <SymbolComment v-for="comment in comments" :key="comment.id" :comment="comment" :symbolid="symbol.id"/>
+      <Comment v-for="comment in comments" :key="comment.id" :comment="comment" :symbolid="symbol.id"/>
     </div>
     <form class="comment-form" @submit="create">
       <textarea v-model="comment" :placeholder="$t('home.comments.placeholder')" class="comment-form__input" />
@@ -35,12 +35,12 @@
 </template>
 
 <script>
-import SymbolComment from "./SymbolComment";
+import Comment from "./Comment";
 
 export default {
-  name: "SymbolCommentForm",
+  name: "DetailComments",
   components: {
-    SymbolComment
+    Comment
   },
   props: {
     symbol: {

@@ -70,7 +70,7 @@
 import "../../../assets/icons/compiled";
 
 export default {
-  name: "SymbolComment",
+  name: "Comment",
   props: {
     comment: {
       default: undefined,

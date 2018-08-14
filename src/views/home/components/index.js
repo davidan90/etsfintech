@@ -1,15 +1,21 @@
 import SymbolsTable from "./SymbolsTable";
 import SymbolDetail from "./SymbolDetail";
-import SymbolCommentForm from "./SymbolCommentForm";
-import SymbolComment from "./SymbolComment";
 import SymbolsFilter from "./SymbolsFilter";
 import FilterOption from "./FilterOption";
+import DateChart from "./DateChart";
+import DetailHeader from "./DetailHeader";
+import DetailInfo from "./DetailInfo";
+import DetailComments from "./DetailComments";
+import Comment from "./Comment";
 
 export {
   SymbolsTable,
   SymbolDetail,
-  SymbolCommentForm,
-  SymbolComment,
   SymbolsFilter,
-  FilterOption
+  FilterOption,
+  DateChart,
+  DetailHeader,
+  DetailInfo,
+  DetailComments,
+  Comment
 };

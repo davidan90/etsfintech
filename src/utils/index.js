@@ -1,6 +1,4 @@
 import Vue from "vue";
-import { recursion } from "./recursion";
-import { symbols } from "./symbols";
 
 Vue.mixin({
   beforeCreate() {
@@ -15,7 +13,31 @@ Vue.mixin({
 
 export default function() {
   return {
-    recursion,
-    symbols
+    getAllValuesByAttribute(arrayOfSymbols, attribute) {
+      if (!attribute || !arrayOfSymbols) {
+        return;
+      }
+
+      let allValues = [];
+      arrayOfSymbols.forEach(symbol => {
+        const data = symbol[attribute];
+        if (allValues.indexOf(data) < 0) {
+          allValues.push(data);
+        }
+      });
+
+      return allValues;
+    },
+
+    nestedLevels(data, atribute, result, level) {
+      const key = `${atribute}_level${level}`;
+      if (!data[key]) {
+        return result;
+      }
+      return (
+        result +
+        this.nestedLevels(data[key], atribute, ` / ${data[key].name}`, ++level)
+      );
+    }
   };
 }
