@@ -1,27 +1,27 @@
 <style lang="scss" scoped>
+@import "responsive";
 @import "colors";
 
-#navBar {
-  width: 100%;
-
+.navbar {
   span {
-    margin: 0 1rem;
+    border-right: 2px solid $blue-color;
+    font-size: 1.2rem;
+    padding: 0 5px;
+    text-transform: uppercase;
 
-    a {
-      color: $blue-color;
-      font-weight: bold;
-      text-decoration: none;
-
-      &:hover {
-        color: $purple-color;
-      }
+    &:last-child {
+      border-right: 0;
     }
+  }
+
+  @media #{$screen-s} {
+    display: none;
   }
 }
 </style>
 
 <template>
-  <nav id="navBar">
+  <nav class="navbar">
     <span>
       <router-link to="/home">{{ $t("home.title") }}</router-link>
     </span>

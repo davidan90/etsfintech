@@ -28,7 +28,7 @@
       <Comment v-for="comment in comments" :key="comment.id" :comment="comment" :symbolid="symbol.id"/>
     </div>
     <form class="comment-form" @submit="create">
-      <textarea v-model="comment" :placeholder="$t('home.comments.placeholder')" class="comment-form__input" />
+      <textarea v-model="comment" :placeholder="$t('home.comments.placeholder')" />
       <button type="submit">{{ $t("home.comments.button.create") }}</button>
     </form>
   </div>

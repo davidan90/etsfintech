@@ -21,27 +21,27 @@
         {{ `${$t("home.aside.symbols.detail.isin")}: ${details.isin}` }}
       </span>
     </div>
-    <div class="symbol-detail__info">
+    <div class="info">
       <span>
         {{ `${$t("home.aside.symbols.detail.issuer")}: ${details.issuer.name}` }}
       </span>
     </div>
-    <div class="symbol-detail__info">
+    <div class="info">
       <span>
         {{ `${$t("home.aside.symbols.detail.risk")}: ${riskDetails}` }}
       </span>
     </div>
-    <div class="symbol-detail__info">
+    <div class="info">
       <span>
         {{ `${$t("home.aside.symbols.detail.currency")}: ${details.currency.name}` }}
       </span>
     </div>
-    <div class="symbol-detail__info">
+    <div class="info">
       <span>
         {{ `${$t("home.aside.symbols.detail.sector")}: ${nestedInfo("sector")}` }}
       </span>
     </div>
-    <div class="symbol-detail__info">
+    <div class="info">
       <span>
         {{ `${$t("home.aside.symbols.detail.region")}: ${nestedInfo("region")}` }}
       </span>

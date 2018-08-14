@@ -2,58 +2,36 @@
 @import "global";
 @import "mixins";
 @import "colors";
+@import "responsive";
 
 #etsfintech {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  header.header,
-  main.main {
-    box-sizing: border-box;
-  }
-
-  header.header {
-    @include flex(row, center, flex-start);
-
-    background-color: $gray-color;
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.7);
-    padding: 10px 0;
-    text-transform: uppercase;
-    width: 100%;
-
-    .header__logo,
-    .header__navbar {
-      @include flex(row, center, inherit);
-    }
-
-    .header__logo {
-      justify-content: center;
-      width: 20vw;
-
-      img {
-        height: 50px;
-        width: 60px;
-      }
-    }
-
-    .header__navbar {
-      justify-content: flex-start;
-      width: 80vw;
-    }
-  }
-
-  main.main {
+  main {
     @include flex(column, center, inherit);
 
+    box-sizing: border-box;
     padding: 1.5rem;
     width: 100%;
+
+    @media #{$screen-s} {
+      padding-top: 60px;
+    }
   }
 }
 
 h1 {
+  color: $blue-color;
   font-size: 2rem;
   margin: 1rem;
+  text-transform: uppercase;
+}
+
+a {
+  color: $purple-color;
+  text-decoration: none;
 }
 
 ul {
@@ -69,27 +47,20 @@ li {
 
 <template>
   <div id="etsfintech">
-    <header class="header">
-      <picture class="header__logo">
-        <img src="./assets/img/ets_logo.png">
-      </picture>
-      <div class="header__navbar">
-        <NavBar />
-      </div>
-    </header>
-    <main class="main">
+    <Header />
+    <main>
       <router-view/>
     </main>
   </div>
 </template>
 
 <script>
-import { NavBar } from "components";
+import { Header } from "components";
 
 export default {
   name: "EtsFintechApp",
   components: {
-    NavBar
+    Header
   }
 };
 </script>
