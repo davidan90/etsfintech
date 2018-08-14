@@ -24,6 +24,7 @@
       <Spinner />
     </div>
     <div v-else class="symbol-detail">
+      <DetailNavigation @move="changeDetail" />
       <DetailInfo :details="details" />
       <DetailComments :symbol="symbol" />
     </div>
@@ -33,8 +34,11 @@
 <script>
 import { Aside, Spinner } from "components";
 import DetailHeader from "./DetailHeader";
+import DetailNavigation from "./DetailNavigation";
 import DetailInfo from "./DetailInfo";
 import DetailComments from "./DetailComments";
+
+const onChangeDetail = "change-detail";
 
 export default {
   name: "SymboldDetail",
@@ -42,6 +46,7 @@ export default {
     Aside,
     Spinner,
     DetailHeader,
+    DetailNavigation,
     DetailInfo,
     DetailComments
   },
@@ -57,6 +62,11 @@ export default {
     },
     details() {
       return this.$store.getters.detailSymbol;
+    }
+  },
+  methods: {
+    changeDetail(movement) {
+      this.$emit(onChangeDetail, movement);
     }
   }
 };

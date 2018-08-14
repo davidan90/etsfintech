@@ -7,7 +7,7 @@ header {
 
   background-color: $purple-color;
   color: $white-color;
-  min-height: 50px;
+  min-height: 80px;
   padding: 10px 0;
   width: 100%;
 
@@ -36,7 +36,7 @@ header {
 <template>
   <header>
     <h2>{{ title }}</h2>
-    <svgicon name="clear" class="close-icon" color="#ffffff" @click="close"/>
+    <svgicon name="clear" class="close-icon" color="#ffffff" @click="close" />
   </header>
 </template>
 

@@ -41,12 +41,20 @@
     padding: 0 0.3rem;
 
     textarea {
-      border-radius: 0.3rem;
+      border-radius: 3px;
       box-sizing: border-box;
       min-height: 60px;
       padding: 0.5rem;
       resize: none;
       width: 100%;
+    }
+
+    button {
+      background-color: $purple-color;
+      border: 0;
+      border-radius: 3px;
+      color: $white-color;
+      cursor: pointer;
     }
   }
 }

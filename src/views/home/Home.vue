@@ -17,7 +17,7 @@
       <template v-else>
         <SymbolsFilter />
         <SymbolsTable :symbols="symbols" @show-symbol-detail="showSymbolDetail"/>
-        <SymbolDetail :symbol="symbolSelected"/>
+        <SymbolDetail :symbol="symbolSelected" @change-detail="changeDetail"/>
       </template>
     </article>
   </section>
@@ -69,6 +69,16 @@ export default {
       if (id) {
         this.$store.dispatch("getDetailSymbol", { id });
       }
+    },
+    changeDetail(movement) {
+      const symbolsIds = this.symbols.map(symbol => symbol.id);
+      const indexOfSymbolSelected = symbolsIds.indexOf(this.symbolSelected.id);
+      const newIndexOfSymbolSelected = this.$utils.getIndexCircleArray(
+        symbolsIds,
+        indexOfSymbolSelected + movement
+      );
+      const newDetail = this.symbols[newIndexOfSymbolSelected];
+      this.showSymbolDetail(newDetail);
     }
   }
 };

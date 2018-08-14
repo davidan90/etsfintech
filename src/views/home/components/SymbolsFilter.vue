@@ -14,7 +14,12 @@
     padding: 1rem 0.3rem;
 
     select {
+      background: $blue-color;
+      border: 0;
+      border-radius: 3px;
+      color: $purple-color;
       min-width: 200px;
+      padding: 0.3rem;
     }
 
     .filter-list {

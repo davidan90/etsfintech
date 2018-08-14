@@ -29,6 +29,14 @@ export default function() {
       return allValues;
     },
 
+    getIndexCircleArray(array, newIndex) {
+      return newIndex >= 0
+        ? newIndex > array.length - 1
+          ? 0
+          : newIndex
+        : array.length - 1;
+    },
+
     nestedLevels(data, atribute, result, level) {
       const key = `${atribute}_level${level}`;
       if (!data[key]) {

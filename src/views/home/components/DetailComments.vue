@@ -1,5 +1,6 @@
 <style lang="scss" scoped>
 @import "mixins";
+@import "colors";
 
 .comment-section {
   width: 100%;
@@ -10,19 +11,26 @@
     margin: 1rem 0;
 
     textarea {
-      border-radius: 0.3rem;
+      border-radius: 3px;
       box-sizing: border-box;
       height: 4rem;
       margin-bottom: 0.5rem;
       resize: none;
       width: 100%;
     }
+
+    button {
+      background-color: $purple-transparent-color;
+      border-radius: 3px;
+      color: $purple-color;
+      cursor: pointer;
+    }
   }
 }
 </style>
 
 <template>
-  <div v-if="symbol" class="comment-section">
+  <section v-if="symbol" class="comment-section">
     <div v-if="comments" class="comments">
       <h3>{{ $t('home.comments.title') }}</h3>
       <Comment v-for="comment in comments" :key="comment.id" :comment="comment" :symbolid="symbol.id"/>
@@ -31,7 +39,7 @@
       <textarea v-model="comment" :placeholder="$t('home.comments.placeholder')" />
       <button type="submit">{{ $t("home.comments.button.create") }}</button>
     </form>
-  </div>
+  </section>
 </template>
 
 <script>

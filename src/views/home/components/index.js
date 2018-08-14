@@ -5,6 +5,7 @@ import FilterOption from "./FilterOption";
 import DateChart from "./DateChart";
 import DetailHeader from "./DetailHeader";
 import DetailInfo from "./DetailInfo";
+import DetailNavigation from "./DetailNavigation";
 import DetailComments from "./DetailComments";
 import Comment from "./Comment";
 
@@ -16,6 +17,7 @@ export {
   DateChart,
   DetailHeader,
   DetailInfo,
+  DetailNavigation,
   DetailComments,
   Comment
 };
