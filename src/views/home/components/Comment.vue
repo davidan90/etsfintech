@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import "../../../assets/icons/compiled";
+import "assets/icons/compiled";
 
 export default {
   name: "Comment",
@@ -96,35 +96,11 @@ export default {
       this.isUpdating = !this.isUpdating;
     },
     remove() {
-      const comments = JSON.parse(localStorage.getItem("comments"));
-      if (comments) {
-        const commentIds = comments[this.symbolid].map(comment => comment.id);
-        comments[this.symbolid].splice(commentIds.indexOf(this.comment.id), 1);
-      }
-      this.$store.dispatch("removeComment", {
-        symbolId: this.symbolid,
-        commentId: this.comment.id
-      });
-      localStorage.setItem("comments", JSON.stringify(comments));
+      this.$services.comment.removeFromLocal(this.symbolid, this.comment.id);
     },
     update(e) {
       e.preventDefault();
-      const comments = JSON.parse(localStorage.getItem("comments"));
-      if (comments) {
-        const commentIds = comments[this.symbolid].map(comment => comment.id);
-        const comment = Object.assign(
-          {},
-          comments[this.symbolid][commentIds.indexOf(this.comment.id)],
-          { text: this.comment.text }
-        );
-
-        comments[this.symbolid][commentIds.indexOf(this.comment.id)] = comment;
-      }
-      this.$store.dispatch("updateComment", {
-        symbolId: this.symbolid,
-        updatedComment: this.comment
-      });
-      localStorage.setItem("comments", JSON.stringify(comments));
+      this.$services.comment.updateFromLocal(this.symbolid, this.comment);
       this.toggleUpdate();
     }
   }

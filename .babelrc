@@ -1,42 +1,44 @@
 {
-    "presets": [
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ],
-      "stage-3"
-    ],
-    "plugins": [
-      "syntax-dynamic-import",
-      [
-        "module-resolver",
-        {
-          "root": [
-            "./src"
-          ],
-          "alias": {
-            "api": "./src/api",
-            "components": "./src/components",
-            "views": "./src/views"
-          }
-        }
-      ]
-    ],
-    "env": {
-      "test": {
-        "presets": [
-          [
-            "env",
-            {
-              "targets": {
-                "node": "current"
-              }
-            }
-          ]
-        ]
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
       }
+    ],
+    "stage-3"
+  ],
+  "plugins": [
+    "syntax-dynamic-import",
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "assets": "./src/assets",
+          "api": "./src/api",
+          "components": "./src/components",
+          "services": "./src/services",
+          "store": "./src/store",
+          "views": "./src/views"
+        }
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
     }
   }
-  
+}

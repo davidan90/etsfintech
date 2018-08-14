@@ -14,18 +14,22 @@ export default {
   [PROCESSING_ALL_SYMBOLS](state) {
     state.all.processing = true;
   },
+
   [GET_ALL_SYMBOLS](state, { symbols }) {
     state.all.processing = false;
     state.all.data = symbols;
     state.all.filtered = symbols;
   },
+
   [PROCESSING_DETAIL_SYMBOL](state) {
     state.detail.processing = true;
   },
+
   [GET_DETAIL_SYMBOL](state, { detail }) {
     state.detail.processing = false;
     state.detail.data = detail;
   },
+
   [ADD_COMMENT_TO_SYMBOL](state, { symbolId, comment }) {
     state.all.data = state.all.data.map(symbol => {
       if (symbol.id === symbolId) {
@@ -37,16 +41,20 @@ export default {
       }
       return symbol;
     });
+    state.all.filtered = copyAllData(state);
   },
+
   [REMOVE_COMMENT_FROM_SYMBOL](state, { symbolId, commentId }) {
     state.all.data = state.all.data.map(symbol => {
       if (symbol.id === symbolId) {
-        const commentIds = symbol.comments.map(comment => comment.id);
-        symbol.comments.splice(commentIds.indexOf(commentId), 1);
+        const allCommentIds = symbol.comments.map(comment => comment.id);
+        symbol.comments.splice(allCommentIds.indexOf(commentId), 1);
       }
       return symbol;
     });
+    state.all.filtered = copyAllData(state);
   },
+
   [UPDATE_COMMENT_FROM_SYMBOL](state, { symbolId, updatedComment }) {
     state.all.data = state.all.data.map(symbol => {
       if (symbol.id === symbolId) {
@@ -58,7 +66,9 @@ export default {
       }
       return symbol;
     });
+    state.all.filtered = copyAllData(state);
   },
+
   [FILTER_All_SYMBOLS](state, payload) {
     if (payload.isAdd) {
       state.all.filtered = addFilters(state, payload);
@@ -66,8 +76,9 @@ export default {
       state.all.filtered = removeFilters(state, payload);
     }
   },
+
   [RESET_FILTERS](state) {
-    state.all.filtered = state.all.data.slice();
+    state.all.filtered = copyAllData(state);
   }
 };
 
@@ -89,4 +100,8 @@ const removeFilters = (state, { type, value }) => {
     }
   });
   return filtered;
+};
+
+const copyAllData = state => {
+  return state.all.data.slice();
 };

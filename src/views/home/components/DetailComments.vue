@@ -63,7 +63,7 @@ export default {
       e.preventDefault();
       const isValid = this.isValidComment(this.comment);
       if (isValid) {
-        this.saveInLocalStorage(this.symbol.id, this.comment);
+        this.save(this.symbol.id, this.comment);
       }
     },
     isValidComment(comment) {
@@ -74,35 +74,10 @@ export default {
       }
       return false;
     },
-    saveInLocalStorage(id, text) {
-      this.generateCommentsLocal();
-      const comments = JSON.parse(localStorage.getItem("comments"));
-      if (comments) {
-        let comment;
-        if (comments[id]) {
-          comment = this.createComment(text);
-          comments[id].push(comment);
-        } else {
-          comment = this.createComment(text);
-          comments[id] = [comment];
-        }
-        this.$store.dispatch("addComment", { symbolId: id, comment });
-        localStorage.setItem("comments", JSON.stringify(comments));
-        this.comment = undefined;
-      }
-    },
-    generateCommentsLocal() {
-      if (!localStorage.getItem("comments")) {
-        localStorage.setItem("comments", JSON.stringify({}));
-      }
-    },
-    createComment(text) {
-      return {
-        id: `_${Math.random()
-          .toString(36)
-          .substring(2, 9)}`,
-        text
-      };
+    save(id, text) {
+      const comment = this.$services.comment.createComment(text);
+      this.$services.comment.saveInLocal(id, comment);
+      this.comment = undefined;
     }
   }
 };
