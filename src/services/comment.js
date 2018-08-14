@@ -13,10 +13,15 @@ export default function() {
     },
 
     createComment(text) {
+      const date = new Date();
+      const localeDate = date.toLocaleDateString();
+      const localeTime = date.toLocaleTimeString();
+
       return {
         id: `_${Math.random()
           .toString(36)
           .substring(2, 9)}`,
+        date: `${localeDate} ${localeTime}`,
         text
       };
     },

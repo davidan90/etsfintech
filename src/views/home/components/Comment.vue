@@ -11,12 +11,15 @@
   .comment-content {
     @include flex(row, center, flex-start);
 
-    p {
-      background-color: $white-color;
+    .info {
       margin: 0.3rem;
-      overflow-x: hidden;
-      padding: 0.5rem;
       width: 90%;
+
+      p {
+        background-color: $white-color;
+        overflow-x: hidden;
+        padding: 0.5rem;
+      }
     }
 
     .options {
@@ -52,7 +55,10 @@
 <template>
   <div v-if="isValidComment" class="comment">
     <div v-if="!isUpdating" class="comment-content">
-      <p>{{ comment.text }}</p>
+      <div class="info">
+        <span>{{ comment.date }}</span>
+        <p>{{ comment.text }}</p>
+      </div>
       <div class="options">
         <svgicon name="edit" class="option-icon" color="#360052" @click="toggleUpdate"/>
         <svgicon name="delete" class="option-icon" color="#360052" @click="remove"/>
