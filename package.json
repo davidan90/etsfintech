@@ -12,8 +12,9 @@
   ],
   "scripts": {
     "start": "npm run icons && npm run dev",
+    "build": "npm run icons && npm run pro",
     "dev": "node ./config/webpack/dev/webpack-server.js",
-    "build": "webpack --config ./config/webpack/prod/webpack.config.js",
+    "pro": "webpack --config ./config/webpack/prod/webpack.config.js",
     "lint": "eslint --ext .js,.vue src",
     "lint:css": "stylelint '**/*.vue' --syntax scss",
     "lint:js:fix": "eslint --ext .js,.vue src --fix",
@@ -24,7 +25,7 @@
     "coverage:open:mac": "open coverage/lcov-report/index.html",
     "coverage:open:linux": "xdg-open coverage/lcov-report/index.html",
     "icons": "vsvg -s ./src/assets/icons -t ./src/assets/icons/compiled",
-    "precommit": "npm run lint && npm run lint:css"
+    "precommit": "npm run lint && npm run lint:css && npm run test"
   },
   "dependencies": {
     "chart.js": "^2.7.2",
