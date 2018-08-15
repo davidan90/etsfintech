@@ -11,7 +11,8 @@
     "not ie <= 11"
   ],
   "scripts": {
-    "start": "node ./config/webpack/dev/webpack-server.js",
+    "start": "npm run icons && npm run dev",
+    "dev": "node ./config/webpack/dev/webpack-server.js",
     "build": "webpack --config ./config/webpack/prod/webpack.config.js",
     "lint": "eslint --ext .js,.vue src",
     "lint:css": "stylelint '**/*.vue' --syntax scss",
