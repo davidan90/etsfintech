@@ -8,6 +8,7 @@
 - Vuex
 - Vue-i18n
 - Vue-router
+- Vue-chartjs
 
 ## Dev dependencies
 
@@ -18,7 +19,7 @@
 
 ## Start running
 
-``` bash
+```bash
 # install dependencies
 npm i
 
@@ -28,7 +29,7 @@ npm start
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm i
 
@@ -37,7 +38,8 @@ npm run build
 ```
 
 ## Run tests
-``` bash
+
+```bash
 # install dependencies
 npm i
 
@@ -53,6 +55,7 @@ npm run coverage:open:linux
 ```
 
 ### Notes
+
 Dev enviroment:
 
 - VsCode
