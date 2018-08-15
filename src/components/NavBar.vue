@@ -4,13 +4,13 @@
 
 .navbar {
   span {
-    border-right: 2px solid $blue-color;
+    border-left: 2px solid $blue-color;
     font-size: 1.2rem;
     padding: 0 5px;
     text-transform: uppercase;
 
-    &:last-child {
-      border-right: 0;
+    &:first-child {
+      border-left: 0;
     }
   }
 

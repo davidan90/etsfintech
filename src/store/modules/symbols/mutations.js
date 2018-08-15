@@ -99,7 +99,7 @@ const removeFilters = (state, { type, value }) => {
       filtered.push(symbol);
     }
   });
-  return filtered;
+  return filtered.length !== 0 ? filtered : copyAllData(state);
 };
 
 const copyAllData = state => {

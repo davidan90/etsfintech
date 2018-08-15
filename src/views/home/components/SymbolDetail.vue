@@ -19,12 +19,11 @@
 
 <template>
   <Aside v-if="symbol">
-    <DetailHeader :title="symbol.name" />
+    <DetailHeader :title="symbol.name" @move="changeDetail" />
     <div v-if="isLoadingDetails" class="symbol-detail loader">
       <Spinner />
     </div>
     <div v-else class="symbol-detail">
-      <DetailNavigation @move="changeDetail" />
       <DetailInfo :details="details" />
       <DetailComments :symbol="symbol" />
     </div>
@@ -34,7 +33,6 @@
 <script>
 import { Aside, Spinner } from "components";
 import DetailHeader from "./DetailHeader";
-import DetailNavigation from "./DetailNavigation";
 import DetailInfo from "./DetailInfo";
 import DetailComments from "./DetailComments";
 
@@ -46,7 +44,6 @@ export default {
     Aside,
     Spinner,
     DetailHeader,
-    DetailNavigation,
     DetailInfo,
     DetailComments
   },

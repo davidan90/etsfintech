@@ -49,7 +49,9 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("getAllSymbols");
+    if (!this.symbols) {
+      this.$store.dispatch("getAllSymbols");
+    }
   },
   methods: {
     showSymbolDetail(symbol) {
