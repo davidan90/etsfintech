@@ -33,6 +33,10 @@
         cursor: pointer;
         height: 1.5rem;
         width: 1.5rem;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }

@@ -1,8 +1,21 @@
 <style lang="scss" scoped>
 @import "mixins";
+@import "colors";
 
 .detail-info {
   width: 100%;
+
+  .info {
+    margin: 0.5rem 0;
+
+    &:hover {
+      background-color: $purple-transparent-color;
+    }
+
+    span:first-child {
+      color: $blue-color;
+    }
+  }
 
   .symbol-chart {
     @include flex(row, center, center);
@@ -17,34 +30,28 @@
   <section v-if="details" class="detail-info">
     <h3>{{ $t('home.aside.symbols.details') }}</h3>
     <div class="info">
-      <span>
-        {{ `${$t("home.aside.symbols.detail.isin")}: ${details.isin}` }}
-      </span>
+      <span> {{ `${$t("home.aside.symbols.detail.isin")}: ` }}</span>
+      <span>{{ details.isin }}</span>
     </div>
     <div class="info">
-      <span>
-        {{ `${$t("home.aside.symbols.detail.issuer")}: ${details.issuer.name}` }}
-      </span>
+      <span>{{ `${$t("home.aside.symbols.detail.issuer")}: ` }}</span>
+      <span>{{ details.issuer.name }}</span>
     </div>
     <div class="info">
-      <span>
-        {{ `${$t("home.aside.symbols.detail.risk")}: ${riskDetails}` }}
-      </span>
+      <span>{{ `${$t("home.aside.symbols.detail.risk")}: ` }}</span>
+      <span>{{ riskDetails }}</span>
     </div>
     <div class="info">
-      <span>
-        {{ `${$t("home.aside.symbols.detail.currency")}: ${details.currency.name}` }}
-      </span>
+      <span>{{ `${$t("home.aside.symbols.detail.currency")}: ` }}</span>
+      <span>{{ details.currency.name }}</span>
     </div>
     <div class="info">
-      <span>
-        {{ `${$t("home.aside.symbols.detail.sector")}: ${nestedInfo("sector")}` }}
-      </span>
+      <span>{{ `${$t("home.aside.symbols.detail.sector")}: ` }}</span>
+      <span>{{ nestedInfo("sector") }}</span>
     </div>
     <div class="info">
-      <span>
-        {{ `${$t("home.aside.symbols.detail.region")}: ${nestedInfo("region")}` }}
-      </span>
+      <span>{{ `${$t("home.aside.symbols.detail.region")}: ` }}</span>
+      <span>{{ nestedInfo("region") }}</span>
     </div>
     <div class="symbol-chart">
       <DateChart :data="details.prices" :options="{responsive: true}"/>

@@ -46,6 +46,7 @@
 
   .table-head .tr {
     border-bottom: 5px solid $blue-color;
+    font-weight: bold;
     height: 1.5rem;
     text-transform: uppercase;
 
@@ -72,7 +73,7 @@
       transition: transform 0.3s;
 
       &:nth-child(even) {
-        background-color: $gray-color;
+        background-color: $gray-dark-color;
       }
 
       &:hover {
@@ -100,7 +101,7 @@
   }
 
   .table-body--empty {
-    background-color: $gray-color;
+    background-color: $gray-dark-color;
     text-align: center;
     width: 100%;
   }

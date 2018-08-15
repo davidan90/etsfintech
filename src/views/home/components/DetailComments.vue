@@ -31,7 +31,7 @@
 
 <template>
   <section v-if="symbol" class="comment-section">
-    <div v-if="comments" class="comments">
+    <div v-if="hasComments" class="comments">
       <h3>{{ $t('home.comments.title') }}</h3>
       <Comment v-for="comment in comments" :key="comment.id" :comment="comment" :symbolid="symbol.id"/>
     </div>
@@ -64,6 +64,9 @@ export default {
   computed: {
     comments() {
       return this.$store.getters.getSymbolComments(this.symbol.id);
+    },
+    hasComments() {
+      return this.comments && this.comments.length;
     }
   },
   methods: {

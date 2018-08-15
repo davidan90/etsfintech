@@ -17,7 +17,7 @@
 
     @media #{$screen-l} {
       &:hover {
-        background-color: $gray-color;
+        background-color: $gray-dark-color;
         color: $blue-color;
         transform: scale(1.03);
       }

@@ -35,6 +35,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
 ul {
   list-style-type: none;
   padding: 0;

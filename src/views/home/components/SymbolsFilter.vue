@@ -9,7 +9,7 @@
   .filters-content {
     @include flex(row, center, inherit);
 
-    background-color: $gray-color;
+    background-color: $gray-dark-color;
     border-radius: 3px;
     padding: 1rem 0.3rem;
 
