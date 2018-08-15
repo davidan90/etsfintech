@@ -1,14 +1,19 @@
 import { checkStatus, logError } from "../utils";
 
-export const symbols = {
-  endpoints(url) {
-    const mainUrl = "http://jsonstub.com/etsfintech/symbols";
+export default {
+  mainUrl: "http://jsonstub.com/etsfintech/symbols",
+  headers: {
+    "Content-Type": "application/json",
+    "JsonStub-User-Key": "9facef2e-9583-4a83-9f08-c87159f1c113",
+    "JsonStub-Project-Key": "6ed070c1-b334-4612-8fa8-169c5e45baef"
+  },
+  endpoints(urlOption) {
     return params => {
       const urls = {
-        all: `${mainUrl}`,
-        detail: `${mainUrl}/${params ? params.id : 0}`
+        all: `${this.mainUrl}`,
+        detail: `${this.mainUrl}/${params ? params.id : 0}`
       };
-      return urls[url];
+      return urls[urlOption];
     };
   },
 
@@ -16,11 +21,7 @@ export const symbols = {
     const all = this.endpoints("all");
     const options = {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "JsonStub-User-Key": "9facef2e-9583-4a83-9f08-c87159f1c113",
-        "JsonStub-Project-Key": "6ed070c1-b334-4612-8fa8-169c5e45baef"
-      }
+      headers: this.headers
     };
 
     return fetch(all(), options)
@@ -34,11 +35,7 @@ export const symbols = {
     const detail = this.endpoints("detail");
     const options = {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "JsonStub-User-Key": "9facef2e-9583-4a83-9f08-c87159f1c113",
-        "JsonStub-Project-Key": "6ed070c1-b334-4612-8fa8-169c5e45baef"
-      }
+      headers: this.headers
     };
 
     return fetch(detail({ id }), options)

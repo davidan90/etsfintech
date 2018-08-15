@@ -1,4 +1,4 @@
-import { symbols } from "api/symbols";
+import symbols from "api/symbols";
 import {
   PROCESSING_ALL_SYMBOLS,
   GET_ALL_SYMBOLS,

@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { symbols } from "./symbols";
+import symbols from "./symbols";
 
 Vue.mixin({
   beforeCreate() {
