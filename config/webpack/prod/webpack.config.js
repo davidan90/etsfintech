@@ -5,7 +5,8 @@ const loaders = require("../loaders");
 
 module.exports = {
   entry: {
-    index: "./src/main.js"
+    babelpolyfill: 'babel-polyfill',
+    index: './src/main.js',
   },
   output: {
     path: path.resolve(__dirname, "./../../../dist"),
