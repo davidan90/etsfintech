@@ -8,5 +8,9 @@ export const homeRoutes = [
   {
     path: "/home",
     component: Home
+  },
+  {
+    path: "/etsfintech", // github-pages needed
+    redirect: "/home"
   }
 ];
