@@ -1,6 +1,6 @@
 import { Contact } from "views";
 
-export const contactRoutes = [
+export default [
   {
     path: "/contact",
     component: Contact

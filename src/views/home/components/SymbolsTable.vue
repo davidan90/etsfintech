@@ -134,7 +134,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!hasSymbols" class="table-body--empty">
+    <div v-else class="table-body--empty">
       <span>{{ $t("home.sections.symbols.table.empty") }}</span>
     </div>
   </div>

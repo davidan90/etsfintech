@@ -1,16 +1,12 @@
 import { Home } from "views";
 
-export const homeRoutes = [
+export default [
   {
     path: "/",
-    redirect: "/home"
+    component: Home
   },
   {
     path: "/home",
     component: Home
-  },
-  {
-    path: "/etsfintech", // github-pages needed
-    redirect: "/home"
   }
 ];
