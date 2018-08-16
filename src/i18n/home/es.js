@@ -27,7 +27,7 @@ export default {
         region: "Región",
         risk: "Riesgo",
         sector: "Sector",
-        prices: "Precios"
+        price: "Precio"
       }
     }
   },

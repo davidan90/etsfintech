@@ -2,7 +2,7 @@ import SymbolsTable from "./SymbolsTable";
 import SymbolDetail from "./SymbolDetail";
 import SymbolsFilter from "./SymbolsFilter";
 import FilterOption from "./FilterOption";
-import DateChart from "./DateChart";
+import PricesChart from "./PricesChart";
 import DetailHeader from "./DetailHeader";
 import DetailInfo from "./DetailInfo";
 import DetailComments from "./DetailComments";
@@ -13,7 +13,7 @@ export {
   SymbolDetail,
   SymbolsFilter,
   FilterOption,
-  DateChart,
+  PricesChart,
   DetailHeader,
   DetailInfo,
   DetailComments,

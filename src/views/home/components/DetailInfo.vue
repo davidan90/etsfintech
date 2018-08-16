@@ -16,13 +16,6 @@
       color: $blue-color;
     }
   }
-
-  .symbol-chart {
-    @include flex(row, center, center);
-
-    min-height: 420px;
-    width: 100%;
-  }
 }
 </style>
 
@@ -53,19 +46,17 @@
       <span>{{ `${$t("home.aside.symbols.detail.region")}: ` }}</span>
       <span>{{ nestedInfo("region") }}</span>
     </div>
-    <div class="symbol-chart">
-      <DateChart :data="details.prices" :options="{responsive: true}"/>
-    </div>
+    <PricesChart :prices="details.prices" :options="{responsive: true}"/>
   </section>
 </template>
 
 <script>
-import DateChart from "./DateChart";
+import PricesChart from "./PricesChart";
 
 export default {
   name: "DetailInfo",
   components: {
-    DateChart
+    PricesChart
   },
   props: {
     details: {

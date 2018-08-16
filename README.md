@@ -1,6 +1,7 @@
 # EtsFintech Test David
 
-> This project get resources from [jsonstub.com](http://jsonstub.com/)
+It shows a list of financial assets and its details.
+This project get resources from [jsonstub.com](http://jsonstub.com/)
 
 ## Dependencies
 
@@ -8,14 +9,7 @@
 - Vuex
 - Vue-i18n
 - Vue-router
-- Vue-chartjs
-
-## Dev dependencies
-
-- Babel
-- Webpack
-- Jest
-- Vue-test-utils
+- Higcharts
 
 ## Start running
 
@@ -54,10 +48,26 @@ npm run coverage:open:mac
 npm run coverage:open:linux
 ```
 
+## Other scripts
+
+```bash
+# lint styles
+npm run lint:css
+
+# lint js and fix lint js error
+npm run lint
+npm run lint:js:fix
+
+# compile svg icons
+npm run icons
+```
+
 ### Notes
 
-Dev enviroment:
+> Precommit: I use husky dependecy to set a hook before commit changes with git. This hook check that there isn't style and js lint errors and run all the tests before commit.
+
+> Dev enviroment:
 
 - VsCode
-- Node 10.6.0
-- Npm 6.1.0
+- Node 9.8.0
+- Npm 5.6.0

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import * as svgicon from "vue-svgicon";
+import HighchartsVue from "highcharts-vue";
 import App from "./App.vue";
 import router from "./routes";
 import store from "./store";
@@ -10,6 +11,8 @@ import utils from "./utils";
 Vue.use(svgicon, {
   classPrefix: "etsfintechicon-"
 });
+
+Vue.use(HighchartsVue);
 
 new Vue({
   el: "#etsfintechDavid",

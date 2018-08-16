@@ -7,18 +7,12 @@ module.exports = {
   env: {
     browser: true
   },
-  extends: [
-    "prettier",
-    "prettier/standard",
-    "plugin:vue/recommended"
-  ],
-  plugins: [
-    "vue",
-    "prettier"
-  ],
+  extends: ["prettier", "prettier/standard", "plugin:vue/recommended"],
+  plugins: ["vue", "prettier"],
   rules: {
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
+    "vue/attribute-hyphenation": "off",
     "vue/max-attributes-per-line": "off"
   }
 };
